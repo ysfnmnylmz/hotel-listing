@@ -3,6 +3,7 @@ import { List } from 'antd';
 import HotelCard from 'components/cards/HotelCard';
 import { useSelector } from 'react-redux';
 import ListingFooter from './ListingFooter';
+import cn from 'classnames';
 
 const Listing: FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -10,10 +11,9 @@ const Listing: FC = () => {
   const { items } = hotels;
   return (
     <List
+      className={cn('hotel-list')}
       size="large"
-      header={<div>Header</div>}
       footer={<ListingFooter />}
-      bordered
       dataSource={items}
       renderItem={item => <HotelCard />}
     />
