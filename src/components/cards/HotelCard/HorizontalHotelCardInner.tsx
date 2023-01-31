@@ -1,12 +1,13 @@
 import React, { type FC } from 'react';
 import cn from 'classnames';
 import { Image, Typography, Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import placeholder from 'assets/images/hotel-placeholder.webp';
-import './HotelInnerCard.scss';
 const { Title, Text } = Typography;
 const HorizontalHotelCardInner: FC = () => {
   return (
     <div className={cn('hotel-card-inner', 'horizontal')}>
+      <Button type="primary" danger shape="circle" icon={<DeleteOutlined />} className={cn('remove-hotel-button')} />
       <div className={cn('hotel-card-inner-image')}>
         <Image className={cn('hotel-image')} src={placeholder} />
       </div>

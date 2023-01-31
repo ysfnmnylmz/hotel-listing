@@ -3,10 +3,10 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
-import { hotelsSlice } from './slices/hotels';
+import hotelsSliceReducer from './slices/hotels';
 
 const reducers = combineReducers<any>({
-  hotels: hotelsSlice,
+  hotels: hotelsSliceReducer,
 });
 
 const persistConfig = {

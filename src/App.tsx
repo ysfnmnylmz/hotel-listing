@@ -1,20 +1,23 @@
 import React, { type FC } from 'react';
-import logo from './logo.svg';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import routes from 'routes';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 import './App.css';
+import store from 'store';
 
 const App: FC = () => {
+  const router = createBrowserRouter(routes);
+  const persist = persistStore(store);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.StrictMode>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persist}>
+          <RouterProvider router={router} />
+        </PersistGate>
+      </Provider>
+    </React.StrictMode>
   );
 };
 

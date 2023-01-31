@@ -1,0 +1,51 @@
+.hotel-card-wrapper {
+  .hotel-card-inner {
+    display: flex;
+    align-items: center;
+    .remove-hotel-button {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+    &.horizontal {
+    }
+    &-image {
+      max-width: 200px;
+      padding: 0 20px;
+      .hotel-image {
+        border-radius: 8px;
+      }
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      &-typography-wrapper {
+        margin-bottom: calc(100% / 4);
+        &-title {
+          margin: 0;
+        }
+        &-points {
+          background: #ededed;
+          border-radius: 4px;
+        }
+      }
+      &-actions {
+        display: flex;
+        .action-button {
+          margin-right: 10px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  &:hover {
+    .remove-hotel-button {
+      display: block;
+    }
+  }
+}

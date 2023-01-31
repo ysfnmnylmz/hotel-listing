@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: null,
+  items: [1],
   pagination: {
     count: 0,
     size: 5,
@@ -23,7 +23,7 @@ export const hotelsSlice = createSlice({
       };
     },
     changePagination: (state, { payload }) => {
-      if (!!payload.selectedPageNumber) {
+      if (payload.selectedPageNumber) {
         state.pagination.currentPage = payload.selectedPageNumber;
         return;
       }
