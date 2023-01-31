@@ -4,9 +4,11 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import hotelsSliceReducer from './slices/hotels';
+import generalSliceReducer from './slices/general';
 
 const reducers = combineReducers<any>({
   hotels: hotelsSliceReducer,
+  general: generalSliceReducer,
 });
 
 const persistConfig = {
