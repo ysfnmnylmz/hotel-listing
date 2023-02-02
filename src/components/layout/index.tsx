@@ -1,39 +1,20 @@
 import React, { type FC } from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
+import menuItems from 'constants/menuItems';
+import { useNavigate } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items1: MenuProps['items'] = ['1', '2', '3'].map(key => ({
-  key,
-  label: `nav ${key}`,
-}));
-
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
-
 const AppLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleMenuClick = (menuItem: any) => {
+    navigate(menuItem.item.props.href);
+  };
   return (
     <Layout>
       <Header className="header">
         <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
       </Header>
       <Content style={{ padding: '0 50px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -48,7 +29,8 @@ const AppLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
               defaultSelectedKeys={['1']}
               defaultOpenKeys={['sub1']}
               style={{ height: '100%' }}
-              items={items2}
+              items={menuItems}
+              onClick={handleMenuClick}
             />
           </Sider>
           <Content style={{ padding: '0 24px', minHeight: 280 }}>{children}</Content>

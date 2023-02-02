@@ -4,10 +4,10 @@ import { Card } from 'antd';
 import HorizontalHotelCardInner from './HorizontalHotelCardInner';
 import cn from 'classnames';
 import './HotelCard.scss';
-const HeroCard: FC = () => {
+const HeroCard: FC = ({ data }: any) => {
   return (
     <Card style={{ marginTop: 16 }} className={cn('hotel-card-wrapper')}>
-      <HorizontalHotelCardInner />
+      <HorizontalHotelCardInner hotelInfo={data} />
     </Card>
   );
 };
