@@ -18,11 +18,15 @@ const MenuList = [
 const menuItems: MenuProps['items'] = MenuList.map((menu, index) => {
   const key = String(index + 1);
   const menuItemObj = {
-    key: `sub${key}`,
+    key: `${key}`,
     label: menu.name,
     href: menu.href,
+    title: menu.name,
+    icon: undefined,
   };
   if (menu.icon) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     menuItemObj.icon = React.createElement(menu.icon);
   }
   return menuItemObj;

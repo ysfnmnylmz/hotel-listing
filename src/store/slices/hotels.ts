@@ -48,7 +48,9 @@ export const hotelsSlice = createSlice({
     changePagination: (state, { payload }) => {
       state.pagination.currentPage = payload;
     },
-    addHotel: (state, { payload }: PayloadAction) => {
+    addHotel: (state, { payload }: PayloadAction<IHotel>) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       state.items.push(payload);
       state.pagination.count = state.pagination.count + 1;
       state.pagination.totalPage = Math.ceil(state.items.length / state.pagination.size);
@@ -57,9 +59,13 @@ export const hotelsSlice = createSlice({
     selectHotel: (state, { payload }) => {
       state.selectedHotel = payload;
     },
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     removeHotel: (state: IHotelState, { payload }: PayloadAction<any>) => {
       state.items = state.items.filter(x => x.id !== payload);
     },
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     increaseHotelPoint: (state: IHotelState, { payload }: PayloadAction<ICount>) => {
       const hotelIndex = state.items.findIndex(x => x.id === payload.id);
       state.items[hotelIndex] = {
@@ -69,13 +75,12 @@ export const hotelsSlice = createSlice({
       };
       state.items = sortHotels(state.items, state.sortBy);
     },
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     decreaseHotelPoint: (state: IHotelState, { payload }: PayloadAction<ICount>) => {
       const hotelIndex = state.items.findIndex(x => x.id === payload.id);
-      state.items[hotelIndex] = {
-        ...state.items[hotelIndex],
-        points: state.items[hotelIndex].points - payload.point,
-        updatedAt: Date.now(),
-      };
+      state.items[hotelIndex].points = state.items[hotelIndex].points - payload.point;
+      state.items[hotelIndex].updatedAt = Date.now();
       state.items = sortHotels(state.items, state.sortBy);
     },
   },
