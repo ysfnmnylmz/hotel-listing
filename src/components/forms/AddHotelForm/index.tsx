@@ -7,9 +7,7 @@ import cn from 'classnames';
 import './AddHotelForm.scss';
 import type { UploadChangeParam } from 'antd/es/upload';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
-interface IHotel {
-  name: string;
-}
+import { type IHotel } from 'components/cards/HotelCard/hotel.interface';
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();

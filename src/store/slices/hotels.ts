@@ -1,6 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import sortHotels from '../../helpers/sortHotels';
-
+import { type IHotel } from '../../components/cards/HotelCard/hotel.interface';
+interface IAction {
+  payload: any;
+}
+interface IPagination {
+  count: number;
+  size: number;
+  currentPage: number;
+  totalPage: number;
+}
+interface IHotelState {
+  items: IHotel[];
+  selectedHotel: string;
+  sortBy: string;
+  pagination: IPagination;
+}
 const initialState = {
   items: [],
   selectedHotel: null,
