@@ -7,11 +7,13 @@ import { useDispatch } from 'react-redux';
 import { toggleDeleteModel } from 'store/slices/general';
 import { decreaseHotelPoint, increaseHotelPoint, selectHotel } from 'store/slices/hotels';
 const { Title, Text } = Typography;
-const HorizontalHotelCardInner: FC = ({ hotelInfo }) => {
+const HorizontalHotelCardInner: FC = ({ hotelInfo }: any) => {
   const dispatch = useDispatch();
-  const handleDelete = async () => {
-    await dispatch(selectHotel(hotelInfo.id));
-    await dispatch(toggleDeleteModel(true));
+  const handleDelete: any = async () => {
+    await Promise.all([
+      Promise.resolve(dispatch(selectHotel(hotelInfo.id))),
+      Promise.resolve(dispatch(toggleDeleteModel(true))),
+    ]);
   };
   const changeHotelPoint = type => {
     const reqBody = {
