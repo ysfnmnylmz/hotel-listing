@@ -17,7 +17,7 @@ interface IHotel {
   updatedAt: number;
 }
 interface InnerCardProps {
-  hotelInfo: IHotel;
+  hotelInfo: IHotel | any;
 }
 const HorizontalHotelCardInner: FC<InnerCardProps> = ({ hotelInfo }) => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const HorizontalHotelCardInner: FC<InnerCardProps> = ({ hotelInfo }) => {
             {hotelInfo.name}
           </Title>
           <div className={cn('hotel-card-inner-info-typography-wrapper-points')}>
-            <Text type="success">{`${hotelInfo.points || 'default'} Puan`}</Text>
+            <Text type="success">{`${hotelInfo.points || 0} Puan`}</Text>
           </div>
         </div>
         <div className={cn(['hotel-card-inner-info-actions'])}>

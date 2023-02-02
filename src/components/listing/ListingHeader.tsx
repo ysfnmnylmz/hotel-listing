@@ -12,7 +12,7 @@ const ListingHeader: FC = () => {
     setSelectedSortingKey(e.key);
     dispatch(changeSort(e.key));
   };
-  const items: MenuProps['items'] = [
+  const items: MenuProps['items'] | any[] = [
     {
       key: 'ascend',
       label: 'Puan (Artan)',

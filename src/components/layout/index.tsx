@@ -1,11 +1,11 @@
 import React, { type FC } from 'react';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import menuItems from 'constants/menuItems';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const AppLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+const AppLayout: FC = () => {
   const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleMenuClick = (menuItem: any) => {
@@ -33,7 +33,9 @@ const AppLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
               onClick={handleMenuClick}
             />
           </Sider>
-          <Content style={{ padding: '0 24px', minHeight: 280 }}>{children}</Content>
+          <Content style={{ padding: '0 24px', minHeight: 280 }}>
+            <Outlet />
+          </Content>
         </Layout>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>

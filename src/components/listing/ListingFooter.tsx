@@ -6,7 +6,7 @@ import { changePagination } from '../../store/slices/hotels';
 const ListingFooter: FC = () => {
   const dispatch = useDispatch();
   const hotelState = useSelector(({ hotels }: any) => hotels);
-  const pageChangeHandler = pageNumber => {
+  const pageChangeHandler = (pageNumber: number): void => {
     dispatch(changePagination(pageNumber));
   };
   const { pagination } = hotelState;

@@ -7,7 +7,7 @@ import './HotelCard.scss';
 import { type IHotel } from './hotel.interface';
 
 interface HotelCardProps {
-  data: IHotel;
+  data: IHotel | any;
 }
 const HotelCard: FC<HotelCardProps> = ({ data }) => {
   return (

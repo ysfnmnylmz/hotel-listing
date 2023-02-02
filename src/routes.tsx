@@ -1,19 +1,22 @@
 import ListingPage from './pages/Listing.page';
-import React, { type ReactElement } from 'react';
+import React from 'react';
 import AddPage from './pages/Add.page';
-interface IRoutes {
-  path: string;
-  element: ReactElement;
-}
+import AppLayout from './components/layout';
+import { type RouteObject } from 'react-router';
 
-const routes: IRoutes[] = [
+const routes: RouteObject[] = [
   {
-    path: '/',
-    element: <ListingPage />,
-  },
-  {
-    path: 'otel-ekle',
-    element: <AddPage />,
+    element: <AppLayout />,
+    children: [
+      {
+        path: '/',
+        element: <ListingPage />,
+      },
+      {
+        path: 'otel-ekle',
+        element: <AddPage />,
+      },
+    ],
   },
 ];
 

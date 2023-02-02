@@ -1,14 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import sortHotels from '../../helpers/sortHotels';
 import { type IHotel } from '../../components/cards/HotelCard/hotel.interface';
-interface IAction {
-  payload: any;
-}
 interface IPagination {
   count: number;
   size: number;
   currentPage: number;
   totalPage: number;
+}
+interface ICount {
+  id: string;
+  point: number;
 }
 interface IHotelState {
   items: IHotel[];
@@ -47,7 +48,7 @@ export const hotelsSlice = createSlice({
     changePagination: (state, { payload }) => {
       state.pagination.currentPage = payload;
     },
-    addHotel: (state, { payload }) => {
+    addHotel: (state, { payload }: PayloadAction) => {
       state.items.push(payload);
       state.pagination.count = state.pagination.count + 1;
       state.pagination.totalPage = Math.ceil(state.items.length / state.pagination.size);
@@ -56,10 +57,10 @@ export const hotelsSlice = createSlice({
     selectHotel: (state, { payload }) => {
       state.selectedHotel = payload;
     },
-    removeHotel: (state, { payload }) => {
+    removeHotel: (state: IHotelState, { payload }: PayloadAction<any>) => {
       state.items = state.items.filter(x => x.id !== payload);
     },
-    increaseHotelPoint: (state, { payload }) => {
+    increaseHotelPoint: (state: IHotelState, { payload }: PayloadAction<ICount>) => {
       const hotelIndex = state.items.findIndex(x => x.id === payload.id);
       state.items[hotelIndex] = {
         ...state.items[hotelIndex],
@@ -68,7 +69,7 @@ export const hotelsSlice = createSlice({
       };
       state.items = sortHotels(state.items, state.sortBy);
     },
-    decreaseHotelPoint: (state, { payload }) => {
+    decreaseHotelPoint: (state: IHotelState, { payload }: PayloadAction<ICount>) => {
       const hotelIndex = state.items.findIndex(x => x.id === payload.id);
       state.items[hotelIndex] = {
         ...state.items[hotelIndex],
