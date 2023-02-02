@@ -7,7 +7,19 @@ import { useDispatch } from 'react-redux';
 import { toggleDeleteModel } from 'store/slices/general';
 import { decreaseHotelPoint, increaseHotelPoint, selectHotel } from 'store/slices/hotels';
 const { Title, Text } = Typography;
-const HorizontalHotelCardInner: FC = ({ hotelInfo }: any) => {
+
+interface IHotel {
+  points: number;
+  name: string;
+  id: string;
+  image: string;
+  createdAt: number;
+  updatedAt: number;
+}
+interface InnerCardProps {
+  hotelInfo: IHotel;
+}
+const HorizontalHotelCardInner: FC<InnerCardProps> = ({ hotelInfo }) => {
   const dispatch = useDispatch();
   const handleDelete: any = async () => {
     await Promise.all([
@@ -15,7 +27,7 @@ const HorizontalHotelCardInner: FC = ({ hotelInfo }: any) => {
       Promise.resolve(dispatch(toggleDeleteModel(true))),
     ]);
   };
-  const changeHotelPoint = type => {
+  const changeHotelPoint: any = (type: string) => {
     const reqBody = {
       id: hotelInfo.id,
       point: 1,
@@ -41,7 +53,7 @@ const HorizontalHotelCardInner: FC = ({ hotelInfo }: any) => {
             {hotelInfo.name}
           </Title>
           <div className={cn('hotel-card-inner-info-typography-wrapper-points')}>
-            <Text type="success">{`${hotelInfo.points} Puan`}</Text>
+            <Text type="success">{`${hotelInfo.points || 'default'} Puan`}</Text>
           </div>
         </div>
         <div className={cn(['hotel-card-inner-info-actions'])}>
