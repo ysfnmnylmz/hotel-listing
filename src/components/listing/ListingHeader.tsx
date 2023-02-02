@@ -3,6 +3,8 @@ import { Button, Dropdown, type MenuProps } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { changeSort } from 'store/slices/hotels';
+import cn from 'classnames';
+import './ListingHeader.scss';
 
 const ListingHeader: FC = () => {
   const dispatch = useDispatch();
@@ -33,19 +35,21 @@ const ListingHeader: FC = () => {
     dropdownLabelHandler();
   }, [selectedSortingKey]);
   return (
-    <Dropdown
-      menu={{
-        items,
-        onClick: sortingHandler,
-        selectable: true,
-      }}
-      trigger={['click']}
-    >
-      <Button>
-        {label}
-        <DownOutlined />
-      </Button>
-    </Dropdown>
+    <div className={cn('listing-header-wrapper')}>
+      <Dropdown
+        menu={{
+          items,
+          onClick: sortingHandler,
+          selectable: true,
+        }}
+        trigger={['click']}
+      >
+        <Button>
+          {label}
+          <DownOutlined />
+        </Button>
+      </Dropdown>
+    </div>
   );
 };
 
