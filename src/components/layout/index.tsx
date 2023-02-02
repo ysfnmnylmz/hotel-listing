@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd';
 import menuItems from 'constants/menuItems';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const AppLayout: FC = () => {
   const navigate = useNavigate();
@@ -12,9 +12,6 @@ const AppLayout: FC = () => {
   };
   return (
     <Layout>
-      <Header className="header">
-        <div className="logo" />
-      </Header>
       <Content style={{ padding: '0 50px' }}>
         <Layout style={{ padding: '24px 0', background: 'white' }}>
           <Sider width={200}>
@@ -31,7 +28,7 @@ const AppLayout: FC = () => {
           </Content>
         </Layout>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>ETS Tur | Frontend Challenge 379</Footer>
+      <Footer style={{ textAlign: 'center' }}>Frontend Challenge 379</Footer>
     </Layout>
   );
 };

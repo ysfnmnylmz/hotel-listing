@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import './App.css';
 import store from 'store';
+import Loading from 'components/common/Loading';
 
 const App: FC = () => {
   const router = createBrowserRouter(routes);
@@ -13,7 +14,7 @@ const App: FC = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persist}>
+        <PersistGate loading={<Loading />} persistor={persist}>
           <RouterProvider router={router} />
         </PersistGate>
       </Provider>
