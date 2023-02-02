@@ -1,7 +1,13 @@
+@import 'src/assets/styles/variables';
+
 .remove-button {
-  background: linear-gradient(90deg, rgba(72, 38, 231, 1) 0%, rgba(17, 73, 148, 1) 100%);
+  background: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
 }
 .cancel-button {
-  border-color: rgba(72, 38, 231, 1);
-  color: rgba(72, 38, 231, 1);
+  border-color: $color-secondary;
+  color: $color-secondary;
+  &:hover {
+    border-color: $color-secondary-hover;
+    color: $color-secondary-hover;
+  }
 }

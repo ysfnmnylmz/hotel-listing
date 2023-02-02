@@ -1,0 +1,16 @@
+@mixin reset-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+@mixin for-small-phone-only {
+    @media (max-width: 560px) {
+        @content;
+    }
+}
+@mixin for-phone-only {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

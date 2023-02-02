@@ -53,14 +53,15 @@ const HorizontalHotelCardInner: FC<InnerCardProps> = ({ hotelInfo }) => {
             {hotelInfo.name}
           </Title>
           <div className={cn('hotel-card-inner-info-typography-wrapper-points')}>
+            {/* eslint-disable-next-line @typescript-eslint/restrict-template-expressions */}
             <Text type="success">{`${hotelInfo.points || 0} Puan`}</Text>
           </div>
         </div>
         <div className={cn(['hotel-card-inner-info-actions'])}>
-          <Button type="primary" className={cn('action-button')} onClick={() => changeHotelPoint('increase')}>
+          <Button className={cn('action-button')} onClick={() => changeHotelPoint('increase')}>
             Puan Arttır
           </Button>
-          <Button type="primary" className={cn('action-button')} onClick={() => changeHotelPoint('decrease')}>
+          <Button className={cn('action-button')} onClick={() => changeHotelPoint('decrease')}>
             Puan Azalt
           </Button>
         </div>

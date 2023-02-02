@@ -1,6 +1,6 @@
 import React, { type FC, useEffect, useState } from 'react';
 import { Button, Dropdown, type MenuProps } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined, SwapOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { changeSort } from 'store/slices/hotels';
 import cn from 'classnames';
@@ -45,6 +45,7 @@ const ListingHeader: FC = () => {
         trigger={['click']}
       >
         <Button>
+          <SwapOutlined style={{ transform: 'rotate(90deg)' }} />
           {label}
           <DownOutlined />
         </Button>

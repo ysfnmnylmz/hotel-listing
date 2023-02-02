@@ -1,7 +1,12 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
 .hotel-card-wrapper {
   .hotel-card-inner {
     display: flex;
     align-items: center;
+    @include for-phone-only {
+      flex-direction: column;
+    }
     .remove-hotel-button {
       display: none;
       position: absolute;
@@ -22,6 +27,9 @@
       display: flex;
       flex-direction: column;
       align-items: start;
+      @include for-phone-only {
+        align-items: center;
+      }
       &-typography-wrapper {
         margin-bottom: calc(100% / 4);
         &-title {
@@ -30,12 +38,20 @@
         &-points {
           background: #ededed;
           border-radius: 4px;
+          padding: 4px 8px;
+          min-width: 65px;
         }
       }
       &-actions {
         display: flex;
         .action-button {
+          color: $color-secondary;
+          border-color: $color-secondary;
           margin-right: 10px;
+          &:hover {
+            border-color: $color-secondary-hover;
+            color: $color-secondary-hover;
+          }
           &:last-child {
             margin-right: 0;
           }
