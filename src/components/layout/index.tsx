@@ -5,14 +5,18 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import useWindowSize from 'hooks/useWindowSize';
 import cn from 'classnames';
 import './Layout.scss';
+import { useDispatch } from 'react-redux';
+import { changeSort } from '../../store/slices/hotels';
 
 const { Content, Footer, Sider } = Layout;
 
 const AppLayout: FC = () => {
   const navigate = useNavigate();
   const [defaultActiveMenu, setDefaultActiveMenu] = useState<string>('1');
+  const dispatch = useDispatch();
   const { width } = useWindowSize();
   const handleMenuClick = (menuItem: any): void => {
+    dispatch(changeSort('descend'));
     navigate(menuItem.item.props.href);
   };
   const location = useLocation();

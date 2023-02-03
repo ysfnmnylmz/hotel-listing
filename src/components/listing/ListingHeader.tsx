@@ -27,9 +27,7 @@ const ListingHeader: FC = () => {
     },
   ];
   const dropdownLabelHandler: any = () => {
-    const labelName = selectedSortingKey
-      ? items.find(x => x?.key === selectedSortingKey).label
-      : items.find(x => x?.key === sortBy).label;
+    const labelName = selectedSortingKey ? items.find(x => x?.key === selectedSortingKey).label : 'Sıralama';
     setLabel(labelName);
   };
   useEffect(() => {
