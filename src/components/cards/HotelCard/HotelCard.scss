@@ -44,16 +44,28 @@
       }
       &-actions {
         display: flex;
+        @include for-small-phone-only {
+          flex-direction: column;
+          align-items: center;
+        }
         .action-button {
           color: $color-secondary;
           border-color: $color-secondary;
           margin-right: 10px;
+          @include for-small-phone-only {
+            margin-right: 0;
+            margin-bottom: 10px;
+          }
           &:hover {
             border-color: $color-secondary-hover;
             color: $color-secondary-hover;
           }
           &:last-child {
             margin-right: 0;
+
+            @include for-small-phone-only {
+              margin-bottom: 0;
+            }
           }
         }
       }
