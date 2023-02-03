@@ -4,7 +4,7 @@
 <br/>
 
 <p align="center">
-Build with <a href="https://reactjs.org/" target="_blank">React.js v18</a> & <a href="https://redux.js.org/" target="_blank">Redux</a> & <a href="https://sass-lang.com/" target="_blank">SASS</a></p>
+Build with <a href="https://reactjs.org/" target="_blank">React.js v18</a> & <a href="https://redux.js.org/" target="_blank">Redux</a> & <a href="https://sass-lang.com/" target="_blank">SASS</a> & <a href="https://ant.design" target="_blank">Ant Design</a></p>
 
 <br/>
 
