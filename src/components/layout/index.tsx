@@ -3,6 +3,8 @@ import { Layout, Menu } from 'antd';
 import menuItems from 'constants/menuItems';
 import { Outlet, useNavigate } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindowSize';
+import cn from 'classnames';
+import './Layout.scss';
 
 const { Content, Footer, Sider } = Layout;
 
@@ -13,10 +15,10 @@ const AppLayout: FC = () => {
     navigate(menuItem.item.props.href);
   };
   return (
-    <Layout>
-      <Content style={{ padding: '0 50px' }}>
-        <Layout style={{ padding: '24px 0', background: 'white' }}>
-          <Sider width={200} collapsed={width ? width <= 560 : false}>
+    <Layout className={cn('main-wrapper')}>
+      <Content className={cn('content-wrapper')}>
+        <Layout className={cn('content-sub-layout')}>
+          <Sider className={cn('content-aside')} collapsed={width ? width <= 560 : false}>
             <>
               <Menu
                 mode="inline"
@@ -27,12 +29,12 @@ const AppLayout: FC = () => {
               />
             </>
           </Sider>
-          <Content style={{ padding: '0 24px', minHeight: 280 }}>
+          <Content className={cn('content-main')}>
             <Outlet />
           </Content>
         </Layout>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Frontend Challenge 379</Footer>
+      <Footer className={cn('footer')}>Frontend Challenge 379</Footer>
     </Layout>
   );
 };

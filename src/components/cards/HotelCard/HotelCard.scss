@@ -17,8 +17,12 @@
     &.horizontal {
     }
     &-image {
-      max-width: 200px;
+      max-width: 285px;
+      width: 285px;
       padding: 0 20px;
+      @include for-small-phone-only {
+        width: 160px;
+      }
       .hotel-image {
         border-radius: 8px;
       }
