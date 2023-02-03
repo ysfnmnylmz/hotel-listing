@@ -1,5 +1,8 @@
 @import 'src/assets/styles/variables';
 
+.hotel-name {
+  font-weight: bold;
+}
 .remove-button {
   background: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
 }

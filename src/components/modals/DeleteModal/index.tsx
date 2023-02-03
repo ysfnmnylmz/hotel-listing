@@ -5,6 +5,7 @@ import { toggleDeleteModel } from 'store/slices/general';
 import { removeHotel } from 'store/slices/hotels';
 import cn from 'classnames';
 import './DeleteModal.scss';
+import getSelectedHotelName from '../../../helpers/getSelectedHotelName';
 
 const DeleteModal: FC = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const DeleteModal: FC = () => {
   };
   return (
     <Modal
-      title="Hata"
+      title="Oteli Sil"
       open={deleteModal}
       onCancel={handleCancel}
       footer={[
@@ -32,7 +33,10 @@ const DeleteModal: FC = () => {
         </Button>,
       ]}
     >
-      <Typography>isimli oteli silmek istiyor musun?</Typography>
+      <Typography>
+        <span className={cn('hotel-name')}>{getSelectedHotelName(hotelState.items, hotelState.selectedHotel)}</span>{' '}
+        isimli oteli silmek istiyor musun?
+      </Typography>
     </Modal>
   );
 };

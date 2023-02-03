@@ -12,8 +12,8 @@ import { type IHotel } from 'components/cards/HotelCard/hotel.interface';
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
-  // eslint-disable-next-line n/no-callback-literal
   reader.addEventListener('load', () => {
+    // eslint-disable-next-line n/no-callback-literal
     callback(reader.result as string);
   });
   reader.readAsDataURL(img);
@@ -40,6 +40,7 @@ const AddHotelForm: FC = () => {
     if (addCompleted) {
       setTimeout(() => {
         addForm.resetFields();
+        setImageUrl('');
         setAddCompleted(false);
       }, 1500);
     }
@@ -67,7 +68,7 @@ const AddHotelForm: FC = () => {
         </Upload>
       </Form.Item>
       <Form.Item>
-        <Button className={cn('add-button')} htmlType="submit" key={1} type="primary" danger>
+        <Button className={cn('add-button', addCompleted && 'added')} htmlType="submit" key={1} type="primary" danger>
           {addCompleted ? 'Eklendi' : 'Ekle'}
         </Button>
       </Form.Item>

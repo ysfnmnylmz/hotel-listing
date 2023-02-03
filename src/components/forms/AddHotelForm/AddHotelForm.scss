@@ -4,7 +4,7 @@
     background: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
   }
   .added {
-    background-color: green;
+    background: linear-gradient(90deg, $color-green 0%, $color-green-light 100%);
     &:hover {
       background-color: green;
     }
