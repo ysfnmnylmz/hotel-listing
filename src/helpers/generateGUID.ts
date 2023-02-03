@@ -1,4 +1,4 @@
-const generateGUID = () => {
+const generateGUID = (): string => {
   let d = new Date().getTime();
   let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0;
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
