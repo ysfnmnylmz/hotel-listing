@@ -9,9 +9,13 @@ import type { UploadChangeParam } from 'antd/es/upload';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 import { type IHotel } from 'components/cards/HotelCard/hotel.interface';
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result as string));
+  // eslint-disable-next-line n/no-callback-literal
+  reader.addEventListener('load', () => {
+    callback(reader.result as string);
+  });
   reader.readAsDataURL(img);
 };
 
@@ -20,7 +24,7 @@ const AddHotelForm: FC = () => {
   const dispatch = useDispatch();
   const [addCompleted, setAddCompleted] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>();
-  const formSubmit = (values: IHotel) => {
+  const formSubmit = (values: IHotel): void => {
     const hotelObject = {
       ...values,
       id: generateGUID(),
@@ -63,7 +67,7 @@ const AddHotelForm: FC = () => {
         </Upload>
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" className={cn(addCompleted && 'added')}>
+        <Button className={cn('add-button')} htmlType="submit" key={1} type="primary" danger>
           {addCompleted ? 'Eklendi' : 'Ekle'}
         </Button>
       </Form.Item>

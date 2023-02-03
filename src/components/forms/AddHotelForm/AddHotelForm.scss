@@ -1,4 +1,8 @@
+@import 'src/assets/styles/variables';
 .add-hotel-form {
+  .add-button {
+    background: linear-gradient(90deg, $color-primary 0%, $color-secondary 100%);
+  }
   .added {
     background-color: green;
     &:hover {
