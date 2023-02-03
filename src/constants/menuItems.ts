@@ -2,7 +2,7 @@ import { type MenuProps } from 'antd';
 import { LaptopOutlined, UserOutlined } from '@ant-design/icons';
 import React from 'react';
 
-const MenuList = [
+export const MenuList = [
   {
     icon: UserOutlined,
     name: 'Otel Listesi',
@@ -11,7 +11,7 @@ const MenuList = [
   {
     icon: LaptopOutlined,
     name: 'Otel Ekle',
-    href: 'otel-ekle',
+    href: '/otel-ekle',
   },
 ];
 

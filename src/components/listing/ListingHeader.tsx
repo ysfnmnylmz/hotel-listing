@@ -1,7 +1,7 @@
 import React, { type FC, useEffect, useState } from 'react';
 import { Button, Dropdown, type MenuProps } from 'antd';
 import { DownOutlined, SwapOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeSort } from 'store/slices/hotels';
 import cn from 'classnames';
 import './ListingHeader.scss';
@@ -10,6 +10,8 @@ const ListingHeader: FC = () => {
   const dispatch = useDispatch();
   const [selectedSortingKey, setSelectedSortingKey] = useState<string>();
   const [label, setLabel] = useState<string>();
+  const hotelState = useSelector(({ hotels }: any) => hotels);
+  const { sortBy } = hotelState;
   const sortingHandler: MenuProps['onClick'] = e => {
     setSelectedSortingKey(e.key);
     dispatch(changeSort(e.key));
@@ -25,11 +27,10 @@ const ListingHeader: FC = () => {
     },
   ];
   const dropdownLabelHandler: any = () => {
-    setLabel(
-      items.find(x => x?.key === selectedSortingKey)
-        ? items?.find(x => x?.key === selectedSortingKey)?.label
-        : 'Sıralama'
-    );
+    const labelName = selectedSortingKey
+      ? items.find(x => x?.key === selectedSortingKey).label
+      : items.find(x => x?.key === sortBy).label;
+    setLabel(labelName);
   };
   useEffect(() => {
     dropdownLabelHandler();
@@ -41,6 +42,7 @@ const ListingHeader: FC = () => {
           items,
           onClick: sortingHandler,
           selectable: true,
+          defaultSelectedKeys: [sortBy],
         }}
         trigger={['click']}
       >
